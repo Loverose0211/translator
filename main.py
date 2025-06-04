@@ -1,14 +1,18 @@
 from translate import Translator
 
-# 创建翻译器对象，设置翻译方向：从中文到英文
-translator = Translator(from_lang="zh", to_lang="en")
+# 显示提示，让用户输入源语言和目标语言
+from_lang = input("请输入原始语言代码（如 en 表示英文）：")
+to_lang = input("请输入目标语言代码（如 zh 表示中文,ja 表示日文,fr 表示法文）：")
 
-# 用户输入
-word = input("请输入要翻译的中文词语：")
+# 创建翻译器对象
+translator = Translator(from_lang=from_lang, to_lang=to_lang)
 
-# 翻译
+# 让用户输入要翻译的内容
+text = input("请输入要翻译的内容：")
+
+# 翻译并输出结果
 try:
-    translation = translator.translate(word)
+    translation = translator.translate(text)
     print("翻译结果：", translation)
 except Exception as e:
-    print("翻译出错：", e)
+    print("翻译失败：", e)
